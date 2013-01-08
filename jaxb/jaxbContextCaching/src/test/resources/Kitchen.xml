@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<kitchen xmlns="http://rooms.houses.service.jaxb.mpasinski/">
+    <cupboard>
+       <capacity>7</capacity>
+    </cupboard>
+    <fridge>
+       <boughtOn>2013-01-01</boughtOn>
+       <innerTemperature>-4</innerTemperature>
+    </fridge>
+    <isLocked>false</isLocked>
+</kitchen>

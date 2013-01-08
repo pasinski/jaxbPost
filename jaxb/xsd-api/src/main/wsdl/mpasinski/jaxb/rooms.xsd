@@ -1,0 +1,28 @@
+<xs:schema
+        xmlns:furniture="http://furniture.service.jaxb.mpasinski/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        version="1.0"
+        targetNamespace="http://rooms.houses.service.jaxb.mpasinski/">
+    <xs:import namespace="http://furniture.service.jaxb.mpasinski/" schemaLocation="furniture.xsd"/>
+
+    <!--below is the globally defined element with anonymous type-->
+    <!--jaxb will add XmlRoot annotation to the class-->
+
+    <xs:element name="kitchen">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cupboard" type="furniture:cupboard" minOccurs="0"/>
+                <xs:element name="fridge" type="furniture:fridge" minOccurs="0"/>
+                <xs:element name="isLocked" type="xs:boolean" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!--type declaration-->
+    <xs:complexType name="livingRoom">
+        <xs:sequence>
+            <xs:element name="isLocked" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+

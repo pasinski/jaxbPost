@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jaxb</artifactId>
+        <groupId>jaxbPost</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>xsd-api</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>Cp1250</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                        <configuration>
+                            <sourceRoot>${project.basedir}/target/generated-sources/java</sourceRoot>
+                            <wsdlRoot>${project.basedir}/src/main/wsdl</wsdlRoot>
+                            <includes>
+                                <include>*.wsdl</include>
+                            </includes>
+                            <defaultOptions>
+                                <extraargs>
+                                    <extraarg>-verbose</extraarg>
+                                    <extraarg>-autoNameResolution</extraarg>
+                                </extraargs>
+                                <!--<bindingFiles>-->
+                                    <!--<bindingFile>${project.basedir}/src/main/bindings/jaxb-bindings.xml-->
+                                    <!--</bindingFile>-->
+                                <!--</bindingFiles>-->
+                            </defaultOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

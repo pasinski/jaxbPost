@@ -1,0 +1,59 @@
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:house="http://houses.service.jaxb.mpasinski/"
+             xmlns:tns="http://service.jaxb.mpasinski/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://service.jaxb.mpasinski/"
+             name="HouseServiceImplService">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://houses.service.jaxb.mpasinski/" schemaLocation="mpasinski/jaxb/house.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="lockHouse">
+        <part name="arg0" element="house:houseRequest"/>
+    </message>
+    <message name="lockHouseResponse"/>
+    <message name="isHouseLocked">
+        <part name="arg0" element="house:houseLockedRequest"/>
+    </message>
+    <message name="isHouseLockedResponse">
+        <part name="return" element="house:isHouseLockedResponse"/>
+    </message>
+    <portType name="HouseService">
+        <operation name="lockHouse">
+            <input message="tns:lockHouse"/>
+            <output message="tns:lockHouseResponse"/>
+        </operation>
+        <operation name="isHouseLocked">
+            <input message="tns:isHouseLocked"/>
+            <output message="tns:isHouseLockedResponse"/>
+        </operation>
+    </portType>
+    <binding name="HouseServiceImplPortBinding" type="tns:HouseService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="lockHouse">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal" namespace="http://service.jaxb.mpasinski/" />
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://service.jaxb.mpasinski/"/>
+            </output>
+        </operation>
+        <operation name="isHouseLocked">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal" namespace="http://service.jaxb.mpasinski/"/>
+            </input>
+            <output>
+                <soap:body use="literal" namespace="http://service.jaxb.mpasinski/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="HouseServiceImplService">
+        <port name="HouseServiceImplPort" binding="tns:HouseServiceImplPortBinding">
+            <soap:address location="http://127.0.0.1:1111/ts"/>
+        </port>
+    </service>
+</definitions>

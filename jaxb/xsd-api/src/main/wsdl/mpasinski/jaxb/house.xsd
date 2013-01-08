@@ -1,0 +1,41 @@
+<xs:schema xmlns:house="http://houses.service.jaxb.mpasinski/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:rooms="http://rooms.houses.service.jaxb.mpasinski/"
+           version="1.0"
+           targetNamespace="http://houses.service.jaxb.mpasinski/">
+    <xs:import namespace="http://rooms.houses.service.jaxb.mpasinski/" schemaLocation="rooms.xsd"/>
+
+    <!-- globally defined element with named type -->
+    <!-- it will result in XmlElementDecl annotation in ObjectFactory -->
+    <xs:element name="houseObject" type="house:house"/>
+
+    <!--globally defined elements with anonymous type (inline definition)-->
+    <!--it will result in XmlElementRoot annotation to be added to generated class-->
+    <xs:element name="houseRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="house:houseObject"/>
+                <xs:element name="requestDateTime" type="xs:dateTime"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="houseLockedRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="house:houseObject"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="isHouseLockedResponse" type="xs:boolean"></xs:element>
+
+    <!-- Type definition -->
+    <xs:complexType name="house">
+        <xs:sequence>
+            <xs:element name="isLocked" type="xs:boolean" minOccurs="0"/>
+            <xs:element ref="rooms:kitchen" minOccurs="0"/>
+            <xs:element name="livingRoom" type="rooms:livingRoom" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

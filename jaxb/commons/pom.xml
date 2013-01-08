@@ -9,18 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jaxbContextCaching</artifactId>
+    <artifactId>commons</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>jaxbPost</groupId>
-            <artifactId>xsd-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>jaxbPost</groupId>
-            <artifactId>commons</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
+
 </project>
