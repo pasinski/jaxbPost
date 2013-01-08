@@ -17,7 +17,7 @@ public class JaxbUtilsTest {
 
 
     @Test
-    public void testGetJaxbContext() throws JAXBException {
+    public void testGetJaxbContextIsCached() throws JAXBException {
         JAXBContext ctx = JaxbUtils.getJAXBContext(Kitchen.class);
         assertEquals("Both contexts must be equal, as context for Kitchen class should be cached",
                 ctx, JaxbUtils.getJAXBContext(Kitchen.class));
