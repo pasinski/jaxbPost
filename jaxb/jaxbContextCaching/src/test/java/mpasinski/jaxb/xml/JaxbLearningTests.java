@@ -1,16 +1,11 @@
 package mpasinski.jaxb.xml;
 
 import junit.framework.Assert;
-import mpasinski.commons.TestUtils;
-import mpasinski.commons.xml.JaxbUtils;
-import mpasinski.jaxb.service.houses.House;
-import mpasinski.jaxb.service.houses.ObjectFactory;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 
 /**
@@ -39,18 +34,5 @@ public class JaxbLearningTests {
         String validPackage = "mpasinski.jaxb.service.furniture";
         JAXBContext ctx = JAXBContext.newInstance(validPackage);
         Assert.assertNotNull("JAXBContext should be created properly", ctx);
-    }
-
-    @Test
-    public void removeMe(){
-
-        House house = TestUtils.createTestHouseRequest();
-        ObjectFactory factory = new ObjectFactory();
-        JAXBElement<House> elem = factory.createHouseObject(house);
-
-        String houseXML = JaxbUtils.marshallToString(house);
-
-        Assert.assertNotNull(houseXML);
-
     }
 }
