@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<houses:houseRequest xmlns:furniture="http://furniture.service.jaxb.mpasinski/" xmlns:houses="http://houses.service.jaxb.mpasinski/" xmlns:rooms="http://rooms.houses.service.jaxb.mpasinski/">
+    <houses:houseObject>
+        <isLocked>true</isLocked>
+        <rooms:kitchen>
+            <cupboard>
+                <furniture:capacity>8</furniture:capacity>
+            </cupboard>
+            <fridge>
+                <furniture:boughtOn>2013-01-10T20:45:45.033+01:00</furniture:boughtOn>
+                <furniture:innerTemperature>-4</furniture:innerTemperature>
+            </fridge>
+            <isLocked>true</isLocked>
+        </rooms:kitchen>
+        <livingRoom>
+            <isLocked>true</isLocked>
+        </livingRoom>
+    </houses:houseObject>
+    <requestDateTime>2013-01-10T20:45:45.037+01:00</requestDateTime>
+</houses:houseRequest>

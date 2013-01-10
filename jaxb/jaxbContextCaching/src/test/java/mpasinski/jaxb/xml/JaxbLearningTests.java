@@ -44,7 +44,7 @@ public class JaxbLearningTests {
     @Test
     public void removeMe(){
 
-        House house = TestUtils.createTestHouse();
+        House house = TestUtils.createTestHouseRequest();
         ObjectFactory factory = new ObjectFactory();
         JAXBElement<House> elem = factory.createHouseObject(house);
 

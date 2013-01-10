@@ -3,6 +3,7 @@ package mpasinski.commons;
 import mpasinski.jaxb.service.furniture.Cupboard;
 import mpasinski.jaxb.service.furniture.Fridge;
 import mpasinski.jaxb.service.houses.House;
+import mpasinski.jaxb.service.houses.HouseRequest;
 import mpasinski.jaxb.service.houses.rooms.Kitchen;
 import mpasinski.jaxb.service.houses.rooms.LivingRoom;
 import org.springframework.core.io.ClassPathResource;
@@ -47,7 +48,7 @@ public class TestUtils {
         }
     }
 
-    public static House createTestHouse(){
+    public static HouseRequest createTestHouseRequest(){
         House house = new House();
         house.setIsLocked(true);
 
@@ -67,6 +68,11 @@ public class TestUtils {
         LivingRoom livingRoom = new LivingRoom();
         livingRoom.setIsLocked(true);
         house.setLivingRoom(livingRoom);
-        return house;
+
+        HouseRequest request = new HouseRequest();
+        request.setHouseObject(house);
+        request.setRequestDateTime(Calendar.getInstance());
+
+        return request;
     }
 }
