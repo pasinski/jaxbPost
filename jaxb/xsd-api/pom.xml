@@ -45,10 +45,10 @@
                                     <extraarg>-verbose</extraarg>
                                     <extraarg>-autoNameResolution</extraarg>
                                 </extraargs>
-                                <!--<bindingFiles>-->
-                                    <!--<bindingFile>${project.basedir}/src/main/bindings/jaxb-bindings.xml-->
-                                    <!--</bindingFile>-->
-                                <!--</bindingFiles>-->
+                                <bindingFiles>
+                                    <bindingFile>${project.basedir}/src/main/bindings/jaxb-bindings.xml
+                                    </bindingFile>
+                                </bindingFiles>
                             </defaultOptions>
                         </configuration>
                     </execution>

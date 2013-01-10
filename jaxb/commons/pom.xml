@@ -11,5 +11,13 @@
 
     <artifactId>commons</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>jaxbPost</groupId>
+            <artifactId>xsd-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

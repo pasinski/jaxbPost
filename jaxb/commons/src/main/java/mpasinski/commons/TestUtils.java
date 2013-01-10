@@ -1,9 +1,15 @@
 package mpasinski.commons;
 
+import mpasinski.jaxb.service.furniture.Cupboard;
+import mpasinski.jaxb.service.furniture.Fridge;
+import mpasinski.jaxb.service.houses.House;
+import mpasinski.jaxb.service.houses.rooms.Kitchen;
+import mpasinski.jaxb.service.houses.rooms.LivingRoom;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.*;
+import java.util.Calendar;
 import java.util.Scanner;
 
 /**
@@ -39,5 +45,28 @@ public class TestUtils {
         } catch (IOException e) {
             throw new RuntimeException("Errors occured when writing string to file", e);
         }
+    }
+
+    public static House createTestHouse(){
+        House house = new House();
+        house.setIsLocked(true);
+
+        Kitchen kitchen = new Kitchen();
+        kitchen.setIsLocked(true);
+
+        Cupboard cupboard = new Cupboard();
+        cupboard.setCapacity(8);
+        kitchen.setCupboard(cupboard);
+
+        Fridge fridge = new Fridge();
+        fridge.setBoughtOn(Calendar.getInstance());
+        fridge.setInnerTemperature(-4);
+        kitchen.setFridge(fridge);
+        house.setKitchen(kitchen);
+
+        LivingRoom livingRoom = new LivingRoom();
+        livingRoom.setIsLocked(true);
+        house.setLivingRoom(livingRoom);
+        return house;
     }
 }

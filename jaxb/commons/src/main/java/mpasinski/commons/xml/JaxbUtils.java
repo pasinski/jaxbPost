@@ -146,10 +146,14 @@ public final class JaxbUtils {
 
     public static <T> T unmarshallNestedElement(Class<T> clazz, String xmlString, String nestedElemName) throws XMLStreamException, JAXBException {
         XMLStreamReader streamFromString = createXMLStreamReader(xmlString);
-        return unmarshallNestedElement(clazz, streamFromString, nestedElemName);
+        return doUnmsarshallNestedElement(clazz, streamFromString, nestedElemName);
     }
 
     public static <T> T unmarshallNestedElement(Class<T> clazz, XMLStreamReader xmlStreamReader, String nestedElemName) throws XMLStreamException, JAXBException {
+        return doUnmsarshallNestedElement(clazz, xmlStreamReader, nestedElemName);
+    }
+
+    private static <T> T doUnmsarshallNestedElement(Class<T> clazz, XMLStreamReader xmlStreamReader, String nestedElemName) throws XMLStreamException, JAXBException {
         checkNotNull(clazz, "clazz");
         checkNotNull(xmlStreamReader, "xmlStreamReader");
         checkNotNull(nestedElemName, "nestedElemName");
@@ -166,6 +170,31 @@ public final class JaxbUtils {
     public static XMLStreamReader findNode(String xmlString, String nodeName) throws XMLStreamException {
         XMLStreamReader xmlReader = createXMLStreamReader(xmlString);
         return findNode(xmlReader, nodeName);
+    }
+
+    private static XMLStreamReader findNode(XMLStreamReader xmlReader, String nodeName) throws XMLStreamException {
+        int event = 0;
+        for (event = xmlReader.next(); event != XMLStreamReader.END_DOCUMENT; event = xmlReader.next()) {
+            if (event == XMLStreamReader.START_ELEMENT) {
+                if (xmlReader.getLocalName() == nodeName) {
+                    break;
+                }
+            }
+        }
+        if (isEndDocument(event)) {
+            return null;
+        }
+        return xmlReader;
+    }
+
+    private static XMLStreamReader createXMLStreamReader(String xmlString) throws XMLStreamException {
+        XMLInputFactory xif = XMLInputFactory.newFactory();
+        XMLStreamReader xmlReader = xif.createXMLStreamReader(new StringReader(xmlString));
+        return xmlReader;
+    }
+
+    private static boolean isEndDocument(int event) {
+        return event == XMLStreamReader.END_DOCUMENT;
     }
 
     public static boolean isJaxbParseable(Object object) {
@@ -216,30 +245,5 @@ public final class JaxbUtils {
             }
         }
         return null;
-    }
-
-    private static XMLStreamReader findNode(XMLStreamReader xmlReader, String nodeName) throws XMLStreamException {
-        int event = 0;
-        for (event = xmlReader.next(); event != XMLStreamReader.END_DOCUMENT; event = xmlReader.next()) {
-            if (event == XMLStreamReader.START_ELEMENT) {
-                if (xmlReader.getLocalName() == nodeName) {
-                    break;
-                }
-            }
-        }
-        if (isEndDocument(event)) {
-            return null;
-        }
-        return xmlReader;
-    }
-
-    private static XMLStreamReader createXMLStreamReader(String xmlString) throws XMLStreamException {
-        XMLInputFactory xif = XMLInputFactory.newFactory();
-        XMLStreamReader xmlReader = xif.createXMLStreamReader(new StringReader(xmlString));
-        return xmlReader;
-    }
-
-    private static boolean isEndDocument(int event) {
-        return event == XMLStreamReader.END_DOCUMENT;
     }
 }

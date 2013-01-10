@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns4:houseObject xmlns:ns2="http://furniture.service.jaxb.mpasinski/" xmlns:ns4="http://houses.service.jaxb.mpasinski/" xmlns:ns3="http://rooms.houses.service.jaxb.mpasinski/">
+    <isLocked>true</isLocked>
+    <ns3:kitchen>
+        <cupboard>
+            <ns2:capacity>8</ns2:capacity>
+        </cupboard>
+        <fridge>
+            <ns2:boughtOn>2013-01-08T23:24:09.987+01:00</ns2:boughtOn>
+            <ns2:innerTemperature>-4</ns2:innerTemperature>
+        </fridge>
+        <isLocked>true</isLocked>
+    </ns3:kitchen>
+    <livingRoom>
+        <isLocked>true</isLocked>
+    </livingRoom>
+</ns4:houseObject>

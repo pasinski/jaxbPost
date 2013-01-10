@@ -12,6 +12,7 @@
         <module>xsd-api</module>
         <module>jaxbContextCaching</module>
         <module>commons</module>
+        <module>unmarshallNestedElement</module>
     </modules>
 
     <properties>
